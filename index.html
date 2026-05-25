@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+
+<meta charset="UTF-8">
+
+<!-- 📱 iPhone 반응형 필수 -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Stock Board</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<h1>주식 게시판</h1>
+
+<!-- =========================
+     LIST VIEW
+========================= -->
+<div id="listView" class="view active">
+
+    <button onclick="openNewPost()">글쓰기</button>
+    <button onclick="deleteSelectedPosts()">선택 삭제</button>
+    <button onclick="openEditForm()">수정</button>
+    <button onclick="movePostUp()">▲ 위로</button>
+    <button onclick="movePostDown()">▼ 아래로</button>
+
+    <!-- 📱 전체 UI 스케일 적용 영역 -->
+    <div class="scaleWrapper">
+
+        <div class="tableWrap">
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th class="checkColumn">선택</th>
+                        <th class="dateColumn">날짜</th>
+                        <th class="stockColumn">종목</th>
+                        <th class="contentColumn">AFTER</th>
+                        <th class="contentColumn">BEFORE</th>
+                        <th class="contentColumn">REGULAR</th>
+                        <th class="periodColumn">기간</th>
+                        <th class="noteColumn">비고</th>
+                    </tr>
+                </thead>
+
+                <tbody id="boardBody"></tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+    <div id="pagination"></div>
+
+</div>
+
+<!-- =========================
+     FORM VIEW
+========================= -->
+<div id="formView" class="view">
+
+    <button onclick="showList()">← 목록</button>
+
+    <input type="text" id="date" placeholder="날짜">
+    <input type="text" id="stock" placeholder="종목">
+
+    <textarea id="after" placeholder="AFTER"></textarea>
+    <input type="file" id="afterImage" multiple>
+
+    <textarea id="before" placeholder="BEFORE"></textarea>
+    <input type="file" id="beforeImage" multiple>
+
+    <textarea id="regular" placeholder="REGULAR"></textarea>
+    <input type="file" id="regularImage" multiple>
+
+    <input type="text" id="period" placeholder="기간">
+    <textarea id="note" placeholder="비고"></textarea>
+
+    <button onclick="addPost()">등록</button>
+
+</div>
+
+<!-- =========================
+     POPUP
+========================= -->
+<div id="popup" class="popup">
+
+    <div id="closeBtn" onclick="closePopup()">✕</div>
+
+    <img id="popupImage">
+
+    <div class="slideButtons">
+        <button onclick="prevImage()">←</button>
+        <button onclick="nextImage()">→</button>
+    </div>
+
+    <div id="imageCounter"></div>
+
+</div>
+
+<script type="module" src="app.js"></script>
+
+</body>
+</html>

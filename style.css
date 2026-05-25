@@ -1,0 +1,199 @@
+/* =========================
+   📱 기본 설정
+========================= */
+body{
+
+    background:#111;
+    color:white;
+    font-family:sans-serif;
+
+    margin:0;
+    padding:10px;
+
+    /* iPhone 자동 확대 방지 */
+    -webkit-text-size-adjust:100%;
+
+    overflow-x:hidden;
+}
+
+h1{
+    text-align:center;
+}
+
+/* 버튼 */
+button{
+    padding:8px 12px;
+    margin-bottom:10px;
+    cursor:pointer;
+}
+
+/* =========================
+   📱 핵심: 전체 UI 스케일
+========================= */
+
+.scaleWrapper{
+
+    /* 화면 폭 100% 유지 */
+    width:100%;
+
+    /* 스크롤 방지 */
+    overflow:hidden;
+}
+
+/* 📌 iPhone에서 전체 UI를 "축소된 상태로 렌더링" */
+@media (max-width: 768px){
+
+    .tableWrap{
+
+        /* 전체 UI 축소 핵심 */
+        transform: scale(0.82);
+
+        /* 기준점: 좌상단 */
+        transform-origin: top left;
+
+        /* scale로 줄어든 만큼 영역 보정 */
+        width: 122%;
+    }
+}
+
+/* PC는 그대로 */
+@media (min-width: 769px){
+
+    .tableWrap{
+        transform:none;
+        width:100%;
+    }
+}
+
+/* =========================
+   테이블 기본
+========================= */
+
+table{
+
+    width:100%;
+    border-collapse:collapse;
+    table-layout:fixed;
+}
+
+/* 셀 */
+th, td{
+
+    border:1px solid #555;
+    padding:6px;
+
+    text-align:center;
+
+    /* scale 방식이라 글자 따로 안 줄임 */
+    font-size:14px;
+
+    word-break:break-word;
+}
+
+/* 컬럼 */
+.checkColumn{ width:6%; }
+.dateColumn{ width:12%; }
+.stockColumn{ width:14%; }
+.contentColumn{ width:18%; }
+.periodColumn{ width:12%; }
+.noteColumn{ width:18%; }
+
+/* 클릭 */
+.clickable{
+    cursor:pointer;
+    color:#4da3ff;
+}
+
+/* =========================
+   input / textarea
+========================= */
+
+input, textarea{
+
+    width:100%;
+    padding:10px;
+    margin-bottom:10px;
+
+    background:#222;
+    color:white;
+
+    border:1px solid #555;
+
+    box-sizing:border-box;
+}
+
+textarea{
+    min-height:140px;
+    resize:vertical;
+}
+
+/* =========================
+   view
+========================= */
+.view{ display:none; }
+.view.active{ display:block; }
+
+/* =========================
+   pagination
+========================= */
+#pagination{
+    text-align:center;
+    margin-top:20px;
+}
+
+.pageButton{
+    padding:6px 10px;
+    margin:3px;
+    background:#333;
+    color:white;
+    border:none;
+}
+
+.pageButton.active{
+    background:#4da3ff;
+}
+
+/* =========================
+   popup
+========================= */
+
+.popup{
+
+    position:fixed;
+    top:0; left:0;
+
+    width:100%;
+    height:100%;
+
+    background:rgba(0,0,0,0.9);
+
+    display:flex;
+    flex-direction:column;
+
+    justify-content:center;
+    align-items:center;
+
+    opacity:0;
+    pointer-events:none;
+
+    z-index:9999;
+}
+
+.popup.active{
+    opacity:1;
+    pointer-events:auto;
+}
+
+#popupImage{
+    max-width:90%;
+    max-height:80%;
+    transform-origin:center;
+}
+
+#closeBtn{
+    position:absolute;
+    top:20px;
+    right:20px;
+    font-size:40px;
+    cursor:pointer;
+}
